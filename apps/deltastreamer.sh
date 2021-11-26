@@ -11,4 +11,6 @@ spark-submit \
     --payload-class org.apache.hudi.payload.AWSDmsAvroPayload \
     --hoodie-conf hoodie.datasource.write.recordkey.field=id \
     --hoodie-conf hoodie.datasource.write.partitionpath.field=role \
-    --hoodie-conf hoodie.deltastreamer.source.dfs.root=$S3_BASE_PATH
+    --hoodie-conf hoodie.deltastreamer.source.dfs.root=$S3_BASE_PATH \
+    --min-sync-interval-seconds 10 \
+    --continuous
