@@ -32,7 +32,7 @@ df.write.format('hudi').options(
 
 spark.sql("""
     create table if not exists events using hudi
-    options (primaryKey = "id", preCombinedField = "updated_at", type ="cow")
+    options (primaryKey = "id", preCombinedField = "updated_at", type ="mor")
     location "/tmp/data/delta/events"
 """)
 

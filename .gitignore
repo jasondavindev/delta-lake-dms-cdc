@@ -1,2 +1,4 @@
 .env
 data/**
+metastore_db
+*.log
