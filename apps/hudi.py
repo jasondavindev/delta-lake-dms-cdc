@@ -24,7 +24,8 @@ hudi_options = {
     'hoodie.datasource.write.operation': 'upsert',
     'hoodie.datasource.write.precombine.field': precombinedField,
     'hoodie.upsert.shuffle.parallelism': 2,
-    'hoodie.insert.shuffle.parallelism': 2
+    'hoodie.insert.shuffle.parallelism': 2,
+    'hoodie.datasource.write.table.type': 'MERGE_ON_READ'
 }
 
 df.write.format('hudi').options(
