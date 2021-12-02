@@ -27,23 +27,19 @@ RUN tar -xzvf ${TAR_FILE} -C /opt; \
 WORKDIR ${SPARK_HOME}
 
 
-ENV AWS_JARS_VERSION 1.11.874
+ENV AWS_JARS_VERSION 1.11.375
 
-WORKDIR ${SPARK_HOME}/jars
+# WORKDIR ${SPARK_HOME}/jars
 
 # install jars
 RUN wget "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/$AWS_JARS_VERSION/aws-java-sdk-bundle-$AWS_JARS_VERSION.jar"; \
-    wget "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/$AWS_JARS_VERSION/aws-java-sdk-core-$AWS_JARS_VERSION.jar"; \
-    wget "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/$AWS_JARS_VERSION/aws-java-sdk-$AWS_JARS_VERSION.jar"; \
-    wget "https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.2/hadoop-aws-3.2.2.jar"; \
+    wget "https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/${HADOOP_VERSION}.0/hadoop-aws-${HADOOP_VERSION}.0.jar"; \
     wget "https://repo1.maven.org/maven2/io/delta/delta-core_2.12/1.0.0/delta-core_2.12-1.0.0.jar"; \
-    wget "https://repo1.maven.org/maven2/org/apache/spark/spark-avro_2.12/3.1.2/spark-avro_2.12-3.1.2.jar";
-    # wget "https://repo1.maven.org/maven2/org/apache/hudi/hudi-spark3-bundle_2.12/0.9.0/hudi-spark3-bundle_2.12-0.9.0.jar"; \
-    # wget "https://repo1.maven.org/maven2/org/apache/hudi/hudi-utilities-bundle_2.12/0.9.0/hudi-utilities-bundle_2.12-0.9.0.jar"
+    wget "https://repo1.maven.org/maven2/org/apache/spark/spark-avro_2.12/3.1.2/spark-avro_2.12-3.1.2.jar"; \
+    wget "https://repo1.maven.org/maven2/org/apache/hudi/hudi-spark-bundle_2.12/0.7.0/hudi-spark-bundle_2.12-0.7.0.jar"; \
+    wget "https://repo1.maven.org/maven2/org/apache/hudi/hudi-utilities-bundle_2.12/0.7.0/hudi-utilities-bundle_2.12-0.7.0.jar"
 
 COPY jars/* ${SPARK_HOME}/jars/
-
-RUN ln -s /spark ${SPARK_HOME}
 
 RUN pip3 install delta-spark==1.0.0
 

@@ -1,0 +1,15 @@
+hoodie.datasource.write.recordkey.field=id
+hoodie.datasource.write.partitionpath.field=updated_at
+hoodie.datasource.write.keygenerator.type=TIMESTAMP
+hoodie.datasource.write.keygenerator.class=org.apache.hudi.keygen.TimestampBasedKeyGenerator
+hoodie.datasource.write.precombine.field=updated_at
+hoodie.datasource.write.hive_style_partitioning=true
+hoodie.deltastreamer.keygen.timebased.timestamp.type=SCALAR
+hoodie.deltastreamer.keygen.timebased.output.dateformat=yyyy-MM-dd
+hoodie.deltastreamer.keygen.timebased.timestamp.scalar.time.unit=MICROSECONDS
+hoodie.deltastreamer.source.dfs.root=/dms_files/
+hoodie.datasource.write.table.name=users
+hoodie.table.name=users
+hoodie.upsert.shuffle.parallelism=1
+hoodie.insert.shuffle.parallelism=1
+hoodie.delete.shuffle.parallelism=1
